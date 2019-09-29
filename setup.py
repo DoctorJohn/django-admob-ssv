@@ -13,15 +13,15 @@ setup(
 	packages=find_packages(),
 	include_package_data=True,
 	license='MIT License',
-    description='Admob Server-Side Verification for Django projects',
+	description='Admob Server-Side Verification for Django projects',
 	long_description=README,
 	long_description_content_type='text/markdown',
 	url='https://github.com/DoctorJohn/django-admob-ssv',
 	author='Jonathan Ehwald',
 	author_email='pypi@ehwald.info',
-    install_requires=[
+	install_requires=[
 		'Django>=1.11',
-        'ecdsa>=0.13.2',
+		'ecdsa>=0.13.2',
 	],
 	classifiers=[
 		'Environment :: Web Environment',
