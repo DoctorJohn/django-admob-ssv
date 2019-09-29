@@ -31,7 +31,7 @@ urlpatterns = [
 
 2. Listen to the ```django_admob_ssv.signals.valid_admob_ssv``` signal.
 
-```
+```python
 from django.dispatch import receiver
 from django_admob_ssv.signals import valid_admob_ssv
 
