@@ -47,6 +47,6 @@ Take a look at this [list of all SSV callback parameters](https://developers.goo
 
 Also make sure you [connect your receiver properly](https://docs.djangoproject.com/en/2.2/topics/signals/#connecting-receiver-functions), otherwise it won't get called. (Take a look at the "Where should this code live?" box).
 
-# Examples
+## Examples
 
 Take a look at the "Configuration" section above and the provided ```example_project```.
