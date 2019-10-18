@@ -37,7 +37,7 @@ def verify_signature(pem, msg, sig):
     # the decode function will ignore extraneous padding. Before the decode
     # method would occasionaly yield the following exception:
     # binascii.Error: Incorrect padding
-    prepared_sig = base65.urlsafe_b64decode(sig + '===')
+    prepared_sig = base64.urlsafe_b64decode(sig + '===')
 
     try:
         return prepared_key.verify(
