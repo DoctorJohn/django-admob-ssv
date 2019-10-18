@@ -32,7 +32,12 @@ def fetch_public_keys():
 def verify_signature(pem, msg, sig):
     prepared_key = VerifyingKey.from_pem(pem)
     prepared_msg = (urllib.parse.unquote(msg)).encode('utf-8')
-    prepared_sig = base64.urlsafe_b64decode(sig)
+
+    # Ensure that the signatures padding is always a multiple of 4. Note that
+    # the decode function will ignore extraneous padding. Before the decode
+    # method would occasionaly yield the following exception:
+    # binascii.Error: Incorrect padding
+    prepared_sig = base65.urlsafe_b64decode(sig + '===')
 
     try:
         return prepared_key.verify(
