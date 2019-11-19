@@ -1,5 +1,8 @@
 # Django Admob Server-Side Verification (SSV)
 
+![PyPI](https://img.shields.io/pypi/v/django-admob-ssv)
+![PyPI - License](https://img.shields.io/pypi/l/django-admob-ssv)
+
 A Django app providing a view that handles Admob Server-Side Verification callbacks. Successfull verifications trigger a custom signal. Separate apps may listen to that signal and reward the user based on the information received via the callback.
 
 Taken from the [Admob SSV documentation](https://developers.google.com/admob/android/rewarded-video-ssv):
