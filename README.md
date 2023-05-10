@@ -58,7 +58,7 @@ def reward_user(sender, query, **kwargs):
 
 Take a look at this [list of all SSV callback parameters](https://developers.google.com/admob/android/rewarded-video-ssv).
 
-Also make sure you [connect your receiver properly](https://docs.djangoproject.com/en/2.2/topics/signals/#connecting-receiver-functions), otherwise it won't get called. (Take a look at the "Where should this code live?" box).
+Also make sure you [connect your receiver properly](https://docs.djangoproject.com/en/4.2/topics/signals/#connecting-receiver-functions), otherwise it won't get called. (Take a look at the "Where should this code live?" box).
 
 ## Advanced configuration
 
