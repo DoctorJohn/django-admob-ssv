@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from django_admob_ssv.views import admob_ssv
+from admob_ssv.views import admob_ssv
 
 
 urlpatterns = [

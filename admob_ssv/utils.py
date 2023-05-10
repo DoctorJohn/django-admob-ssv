@@ -1,4 +1,4 @@
-from django_admob_ssv.conf import settings
+from admob_ssv.conf import settings
 from ecdsa import VerifyingKey, BadSignatureError
 from ecdsa.util import sigdecode_der
 import hashlib
