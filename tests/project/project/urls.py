@@ -4,6 +4,6 @@ from admob_ssv.views import AdmobSSVView
 
 
 urlpatterns = [
-    path("", AdmobSSVView.as_view()),
     path("admin/", admin.site.urls),
+    path("admob-ssv", AdmobSSVView.as_view()),
 ]
