@@ -50,6 +50,22 @@ Take a look at this [list of all SSV callback parameters](https://developers.goo
 
 Also make sure you [connect your receiver properly](https://docs.djangoproject.com/en/2.2/topics/signals/#connecting-receiver-functions), otherwise it won't get called. (Take a look at the "Where should this code live?" box).
 
+## Advanced configuration
+
+You may optionally set the following options in your Django `settings.py` file.
+The code snippet below shows the default values used.
+
+```python
+from datetime import timedelta
+
+
+ADMOB_SSV_KEY_SERVER_URL = "https://www.gstatic.com/admob/reward/verifier-keys.json",
+
+ADMOB_SSV_KEYS_CACHE_TIMEOUT = timedelta(days=1)
+
+ADMOB_SSV_KEYS_CACHE_KEY = "admob_ssv.public_keys"
+```
+
 ## Example project
 
 Take a look at our Django example project under `tests/project`.
