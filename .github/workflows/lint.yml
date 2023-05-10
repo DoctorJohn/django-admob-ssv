@@ -40,5 +40,5 @@ jobs:
 
     - name: Lint
       run: |
-        poetry run ruff django_admob_ssv example_project
-        poetry run black django_admob_ssv example_project --check
+        poetry run ruff admob_ssv example_project
+        poetry run black admob_ssv example_project --check

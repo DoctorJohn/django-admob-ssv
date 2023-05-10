@@ -1,9 +1,9 @@
 from django.http import HttpResponse, HttpResponseBadRequest
 from django.views.decorators.http import require_GET
 from django.core.cache import cache
-from django_admob_ssv.conf import settings
-from django_admob_ssv.signals import valid_admob_ssv
-from django_admob_ssv.utils import fetch_public_keys, verify_signature
+from admob_ssv.conf import settings
+from admob_ssv.signals import valid_admob_ssv
+from admob_ssv.utils import fetch_public_keys, verify_signature
 
 
 SIGNATURE_PARAM_NAME = "signature"

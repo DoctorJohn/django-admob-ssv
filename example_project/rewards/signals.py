@@ -1,5 +1,5 @@
 from django.dispatch import receiver
-from django_admob_ssv.signals import valid_admob_ssv
+from admob_ssv.signals import valid_admob_ssv
 from .models import Reward
 
 

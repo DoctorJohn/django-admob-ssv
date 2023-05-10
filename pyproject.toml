@@ -5,7 +5,7 @@ description = "Admob server-side verification for Django projects"
 authors = ["Jonathan Ehwald <github@ehwald.info>"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "django_admob_ssv"}]
+packages = [{include = "admob_ssv"}]
 homepage = "https://github.com/DoctorJohn/django-admob-ssv"
 repository = "https://github.com/DoctorJohn/django-admob-ssv"
 documentation = "https://github.com/DoctorJohn/django-admob-ssv"
