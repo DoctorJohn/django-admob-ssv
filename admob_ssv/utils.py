@@ -9,7 +9,7 @@ import json
 
 def fetch_public_keys():
     keys = dict()
-    url = settings.ADMOB_SSV_KEY_SERVER_URL
+    url = settings.ADMOB_SSV_KEYS_SERVER_URL
 
     try:
         with urllib.request.urlopen(url) as response:
