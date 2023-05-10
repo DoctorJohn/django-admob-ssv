@@ -1,3 +1,4 @@
+import math
 from django.http import HttpResponse, HttpResponseBadRequest
 from django.views.decorators.http import require_GET
 from django.core.cache import cache
@@ -28,7 +29,7 @@ def admob_ssv(request):
     admob_public_keys = cache.get_or_set(
         settings.ADMOB_SSV_KEYS_CACHE_KEY,
         fetch_public_keys(),
-        settings.ADMOB_SSV_KEYS_CACHE_TIMEOUT,
+        math.floor(settings.ADMOB_SSV_KEYS_CACHE_TIMEOUT.total_seconds()),
     )
 
     public_key = admob_public_keys.get(key_id, None)
