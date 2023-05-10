@@ -2,7 +2,7 @@ from django.apps import AppConfig
 
 
 class RewardsConfig(AppConfig):
-    name = "rewards"
+    name = "tests.project.rewards"
 
     def ready(self):
-        import rewards.signals  # noqa: F401
+        import tests.project.rewards.signals  # noqa: F401
