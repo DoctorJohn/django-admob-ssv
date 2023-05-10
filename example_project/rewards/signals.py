@@ -5,18 +5,18 @@ from .models import Reward
 
 @receiver(valid_admob_ssv)
 def reward_user(sender, query, **kwargs):
-    ad_network = query.get('ad_network')
-    ad_unit = query.get('ad_unit')
-    custom_data = query.get('custom_data')
-    key_id = query.get('key_id')
-    reward_amount = query.get('reward_amount')
-    reward_item = query.get('reward_item')
-    signature = query.get('signature')
-    timestamp = query.get('timestamp')
-    transaction_id = query.get('transaction_id')
-    user_id = query.get('user_id')
+    ad_network = query.get("ad_network")
+    ad_unit = query.get("ad_unit")
+    custom_data = query.get("custom_data")
+    key_id = query.get("key_id")
+    reward_amount = query.get("reward_amount")
+    reward_item = query.get("reward_item")
+    signature = query.get("signature")
+    timestamp = query.get("timestamp")
+    transaction_id = query.get("transaction_id")
+    user_id = query.get("user_id")
 
-    msg = 'Valid SSV! Reward item: {}, Reward amount: {}, User ID: {}'
+    msg = "Valid SSV! Reward item: {}, Reward amount: {}, User ID: {}"
     print(msg.format(reward_item, reward_amount, user_id))
 
     Reward.objects.create(

@@ -16,28 +16,28 @@ def fetch_public_keys():
             if response.getcode() != 200:
                 return keys
             data = response.read().decode()
-    except urllib.URLError as e:
+    except urllib.URLError:
         return keys
 
     json_data = json.loads(data)
 
-    for key in json_data['keys']:
-        keys[str(key['keyId'])] = {
-            'pem': key['pem'],
-            'base64': key['base64'],
+    for key in json_data["keys"]:
+        keys[str(key["keyId"])] = {
+            "pem": key["pem"],
+            "base64": key["base64"],
         }
     return keys
 
 
 def verify_signature(pem, msg, sig):
     prepared_key = VerifyingKey.from_pem(pem)
-    prepared_msg = (urllib.parse.unquote(msg)).encode('utf-8')
+    prepared_msg = (urllib.parse.unquote(msg)).encode("utf-8")
 
     # Ensure that the signatures padding is always a multiple of 4. Note that
     # the decode function will ignore extraneous padding. Before the decode
     # method would occasionaly yield the following exception:
     # binascii.Error: Incorrect padding
-    prepared_sig = base64.urlsafe_b64decode(sig + '===')
+    prepared_sig = base64.urlsafe_b64decode(sig + "===")
 
     try:
         return prepared_key.verify(
@@ -46,5 +46,5 @@ def verify_signature(pem, msg, sig):
             hashfunc=hashlib.sha256,
             sigdecode=sigdecode_der,
         )
-    except BadSignatureError as e:
+    except BadSignatureError:
         return False

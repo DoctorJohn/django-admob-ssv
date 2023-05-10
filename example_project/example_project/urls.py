@@ -4,6 +4,6 @@ from django_admob_ssv.views import admob_ssv
 
 
 urlpatterns = [
-    path('', admob_ssv),
-    path('admin/', admin.site.urls),
+    path("", admob_ssv),
+    path("admin/", admin.site.urls),
 ]
