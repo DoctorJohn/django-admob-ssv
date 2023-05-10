@@ -15,6 +15,6 @@ ADMOB_SSV_KEYS_CACHE_TIMEOUT = getattr(
 
 ADMOB_SSV_KEYS_CACHE_KEY = getattr(
     settings,
-    "ADMOB_SSB_KEYS_CACHE_KEY",
+    "ADMOB_SSV_KEYS_CACHE_KEY",
     "admob_ssv.public_keys",
 )
