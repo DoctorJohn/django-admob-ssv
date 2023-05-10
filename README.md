@@ -21,12 +21,6 @@ Taken from the [Admob SSV documentation](https://developers.google.com/admob/and
 
 Server-side verification callbacks are URL requests, with query parameters expanded by Google, that are sent by Google to an external system to notify it that a user should be rewarded for interacting with a rewarded video ad. Rewarded video SSV (server-side verification) callbacks provide an extra layer of protection against spoofing of client-side callbacks to reward users.
 
-## Requirements
-
-- Python 3
-- [Django](https://pypi.org/project/Django/) (version 1.11+)
-- [ecdsa](https://pypi.org/project/ecdsa/)
-
 ## Installation
 
 ```pip install django-admob-ssv```
