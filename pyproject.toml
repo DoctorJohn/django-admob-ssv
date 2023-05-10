@@ -1,0 +1,39 @@
+[tool.poetry]
+name = "django-admob-ssv"
+version = "1.0.4"
+description = "Admob server-side verification for Django projects"
+authors = ["Jonathan Ehwald <github@ehwald.info>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "django_admob_ssv"}]
+homepage = "https://github.com/DoctorJohn/django-admob-ssv"
+repository = "https://github.com/DoctorJohn/django-admob-ssv"
+documentation = "https://github.com/DoctorJohn/django-admob-ssv"
+classifiers = [
+    "Environment :: Web Environment",
+    "Framework :: Django",
+    "Framework :: Django :: 3.2",
+    "Framework :: Django :: 4.1",
+    "Framework :: Django :: 4.2",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+django = ">3.2"
+ecdsa = "^0.18.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
