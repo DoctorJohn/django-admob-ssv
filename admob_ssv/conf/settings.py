@@ -1,4 +1,5 @@
 from django.conf import settings
+from datetime import timedelta
 
 
 ADMOB_SSV_KEY_SERVER_URL = getattr(
@@ -10,7 +11,7 @@ ADMOB_SSV_KEY_SERVER_URL = getattr(
 ADMOB_SSV_KEYS_CACHE_TIMEOUT = getattr(
     settings,
     "ADMOB_SSV_KEYS_CACHE_TIMEOUT",
-    24 * 60 * 60,  # 24 hours in seconds
+    timedelta(days=1),
 )
 
 ADMOB_SSV_KEYS_CACHE_KEY = getattr(
