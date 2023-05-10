@@ -32,15 +32,15 @@ pip install django-admob-ssv
 
 ## Configuration
 
-1. Add a `path` for the `admob_ssv.views.admob_ssv` view to your `urlpatterns`.
+1. Add a `path` for the `admob_ssv.views.AdmobSSVView` view to your `urlpatterns`.
 
 ```python
 from django.urls import path
-from admob_ssv.views import admob_ssv
+from admob_ssv.views import AdmobSSVView
 
 
 urlpatterns = [
-    path('admob-ssv/', admob_ssv),
+    path('admob-ssv/', AdmobSSVView.as_view()),
 ]
 ```
 
