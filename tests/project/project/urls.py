@@ -1,9 +1,9 @@
 from django.contrib import admin
 from django.urls import path
-from admob_ssv.views import admob_ssv
+from admob_ssv.views import AdmobSSVView
 
 
 urlpatterns = [
-    path("", admob_ssv),
+    path("", AdmobSSVView.as_view()),
     path("admin/", admin.site.urls),
 ]
