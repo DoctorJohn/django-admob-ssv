@@ -23,26 +23,30 @@ Server-side verification callbacks are URL requests, with query parameters expan
 
 ## Installation
 
-```pip install django-admob-ssv```
+```sh
+pip install django-admob-ssv
+```
 
 ## Configuration
 
-1. Add a ```path``` for the ```admob_ssv.views.admob_ssv``` view to your ```urlpatterns```.
+1. Add a `path` for the `admob_ssv.views.admob_ssv` view to your `urlpatterns`.
 
 ```python
 from django.urls import path
 from admob_ssv.views import admob_ssv
+
 
 urlpatterns = [
     path('admob-ssv/', admob_ssv),
 ]
 ```
 
-2. Listen to the ```admob_ssv.signals.valid_admob_ssv``` signal.
+2. Listen to the `admob_ssv.signals.valid_admob_ssv` signal.
 
 ```python
 from django.dispatch import receiver
 from admob_ssv.signals import valid_admob_ssv
+
 
 @receiver(valid_admob_ssv)
 def reward_user(sender, query, **kwargs):
