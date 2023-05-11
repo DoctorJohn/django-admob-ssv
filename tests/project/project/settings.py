@@ -2,6 +2,8 @@ DEBUG = True
 
 SECRET_KEY = "fake-key"
 
+ALLOWED_HOSTS = ["*"]
+
 ROOT_URLCONF = "tests.project.project.urls"
 
 DATABASES = {"default": {"ENGINE": "django.db.backends.sqlite3", "NAME": "db.sqlite"}}
