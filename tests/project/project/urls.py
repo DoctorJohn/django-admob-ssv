@@ -7,5 +7,5 @@ from admob_ssv.views import AdmobSSVView
 urlpatterns = [
     path("", RedirectView.as_view(url="/admin/")),
     path("admin/", admin.site.urls),
-    path("admob-ssv", AdmobSSVView.as_view()),
+    path("admob-ssv/", AdmobSSVView.as_view()),
 ]
