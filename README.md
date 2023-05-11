@@ -30,9 +30,7 @@ Taken from the [Admob SSV documentation](https://developers.google.com/admob/and
 pip install django-admob-ssv
 ```
 
-## Configuration
-
-1. Add a `path` for the `admob_ssv.views.AdmobSSVView` view to your `urlpatterns`.
+Add a `path` for the `admob_ssv.views.AdmobSSVView` view to your `urlpatterns`.
 
 ```python
 from django.urls import path
@@ -44,7 +42,11 @@ urlpatterns = [
 ]
 ```
 
-2. Listen to the `admob_ssv.signals.valid_admob_ssv` signal.
+Listen to the `admob_ssv.signals.valid_admob_ssv` signal and make sure
+you [connect your receiver properly][receiver-docs], otherwise it won't
+get called. Take a look at the "Where should this code live?" box.
+
+[receiver-docs]: https://docs.djangoproject.com/en/4.2/topics/signals/#connecting-receiver-functions
 
 ```python
 from django.dispatch import receiver
@@ -59,11 +61,12 @@ def reward_user(sender, query, **kwargs):
     # ...
 ```
 
-Take a look at this [list of all SSV callback parameters](https://developers.google.com/admob/android/rewarded-video-ssv).
+Reference the official Admob SSV documentation for a
+[list of all SSV callback parameters][callback-docs].
 
-Also make sure you [connect your receiver properly](https://docs.djangoproject.com/en/4.2/topics/signals/#connecting-receiver-functions), otherwise it won't get called. (Take a look at the "Where should this code live?" box).
+[callback-docs]: https://developers.google.com/admob/android/rewarded-video-ssv
 
-## Advanced configuration
+## Settings
 
 You may optionally set the following options in your Django `settings.py` file.
 The code snippet below shows the default values used.
