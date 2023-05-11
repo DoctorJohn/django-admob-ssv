@@ -91,3 +91,19 @@ You can run it by executing these commands:
 2. `poetry run python tests/project/manage.py migrate`
 3. `poetry run python tests/project/manage.py createsuperuser`
 4. `poetry run python tests/project/manage.py runserver`
+
+### Live testing
+
+The example project can be used to test Admob server-side verification
+live from your local machine. You may use a service like
+[ngrok](https://ngrok.com/) to forward requests from the internet to
+your local machine and the Django webserver running at port `8000`.
+
+```sh
+ngrok http 8000
+```
+
+You are now ready to send test Admob server-side verification callbacks
+from the Admob console.
+
+![Object list page](.github/images/verified.png)
