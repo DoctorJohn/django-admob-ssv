@@ -36,7 +36,7 @@ class AdmobSSVView(View):
 
         return HttpResponseBadRequest()
 
-    def get_signature(self, request: HttpRequest) -> str:
+    def get_signature(self, request: HttpRequest) -> bytes:
         encoded_signature = request.GET[self.SIGNATURE_PARAM_NAME]
 
         # Ensure that the signatures padding is always a multiple of 4. Note that
@@ -45,15 +45,15 @@ class AdmobSSVView(View):
         # binascii.Error: Incorrect padding
         return base64.urlsafe_b64decode(encoded_signature + "===")
 
-    def get_unverified_content(self, request: HttpRequest) -> str:
+    def get_unverified_content(self, request: HttpRequest) -> bytes:
         # According to the Admob SSV documentation, the last two query
         # parameters of rewarded video SSV callbacks are always
         # signature and key_id, in that order. The remaining query
         # parameters specify the content to be verified.
         query_string = request.META["QUERY_STRING"]
         signature_start_index = query_string.index(f"&{self.SIGNATURE_PARAM_NAME}=")
-        encoded_content = query_string[:signature_start_index]
-        return urllib.parse.unquote(encoded_content)
+        escaped_content = query_string[:signature_start_index]
+        return urllib.parse.unquote(escaped_content).encode("utf-8")
 
     def get_public_key(self, key_id: str) -> Optional[str]:
         cached_public_keys = cache.get(settings.ADMOB_SSV_KEYS_CACHE_KEY, default={})
@@ -76,7 +76,9 @@ class AdmobSSVView(View):
         json_data = response.json()
         return {str(key["keyId"]): key["pem"] for key in json_data["keys"]}
 
-    def verify_signature(self, public_key: str, signature: str, content: str) -> bool:
+    def verify_signature(
+        self, public_key: str, signature: bytes, content: bytes
+    ) -> bool:
         from ecdsa import VerifyingKey, BadSignatureError
         from ecdsa.util import sigdecode_der
 
