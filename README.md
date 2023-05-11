@@ -82,6 +82,40 @@ ADMOB_SSV_KEYS_CACHE_TIMEOUT = timedelta(days=1)
 ADMOB_SSV_KEYS_CACHE_KEY = "admob_ssv.public_keys"
 ```
 
+## Using a custom ECDSA library
+
+This project uses the [ecdsa](https://pypi.org/project/ecdsa/) Python
+package to verify the signature of incoming Admob SSV callbacks.
+
+If you want to use a different ECDSA library, you may subclass the
+`admob_ssv.views.AdmobSSVView` view and override the `verify_signature`
+method.
+
+```python
+from admob_ssv.views import AdmobSSVView
+
+
+class MyAdmobSSVView(AdmobSSVView):
+    def verify_signature(
+        self, public_key: str, signature: bytes, content: bytes
+    ) -> bool:
+        # Verify the signature using your custom ECDSA library.
+        # Return True if the signature is valid, False otherwise.
+        pass
+```
+
+Finally add a `path` for your custom view to your `urlpatterns`.
+
+```python
+from django.urls import path
+from my_app.views import MyAdmobSSVView
+
+
+urlpatterns = [
+    path('admob-ssv/', MyAdmobSSVView.as_view()),
+]
+```
+
 ## Example project
 
 Take a look at our Django example project under `tests/project`.
