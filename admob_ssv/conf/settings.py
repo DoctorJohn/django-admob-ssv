@@ -2,7 +2,7 @@ from django.conf import settings
 from datetime import timedelta
 
 
-ADMOB_SSV_KEY_SERVER_URL = getattr(
+ADMOB_SSV_KEYS_SERVER_URL = getattr(
     settings,
     "ADMOB_SSV_KEYS_SERVER_URL",
     "https://www.gstatic.com/admob/reward/verifier-keys.json",
