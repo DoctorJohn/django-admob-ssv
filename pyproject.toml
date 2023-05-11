@@ -33,6 +33,7 @@ classifiers = [
 python = "^3.8"
 django = ">3.2"
 ecdsa = "^0.18.0"
+requests = "^2.30.0"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.0.265"
