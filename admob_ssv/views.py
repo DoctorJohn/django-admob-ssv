@@ -14,18 +14,19 @@ from admob_ssv.signals import valid_admob_ssv
 class AdmobSSVView(View):
     SIGNATURE_PARAM_NAME = "signature"
     KEY_ID_PARAM_NAME = "key_id"
-    REQUIRED_PARAM_NAMES = (SIGNATURE_PARAM_NAME, KEY_ID_PARAM_NAME)
 
     def get(self, request: HttpRequest) -> HttpResponse:
-        for param_name in self.REQUIRED_PARAM_NAMES:
-            if param_name not in request.GET:
-                return HttpResponseBadRequest()
+        if self.SIGNATURE_PARAM_NAME not in request.GET:
+            return HttpResponseBadRequest("Missing signature")
+
+        if self.KEY_ID_PARAM_NAME not in request.GET:
+            return HttpResponseBadRequest("Missing key_id")
 
         key_id = request.GET[self.KEY_ID_PARAM_NAME]
         public_key = self.get_public_key(key_id)
 
         if public_key is None:
-            return HttpResponseBadRequest()
+            return HttpResponseBadRequest("Unknown key_id")
 
         signature = self.get_signature(request)
         content = self.get_unverified_content(request)
@@ -34,7 +35,7 @@ class AdmobSSVView(View):
             valid_admob_ssv.send(sender=None, query=request.GET.dict())
             return HttpResponse()
 
-        return HttpResponseBadRequest()
+        return HttpResponseBadRequest("Invalid signature")
 
     def get_signature(self, request: HttpRequest) -> bytes:
         encoded_signature = request.GET[self.SIGNATURE_PARAM_NAME]
