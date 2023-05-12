@@ -57,7 +57,7 @@ class AdmobSSVView(View):
         return urllib.parse.unquote(escaped_content).encode("utf-8")
 
     def get_public_key(self, key_id: str) -> Optional[str]:
-        cached_public_keys = cache.get(settings.ADMOB_SSV_KEYS_CACHE_KEY, default={})
+        cached_public_keys = cache.get(settings.keys_cache_key, default={})
         cached_public_key = cached_public_keys.get(key_id, None)
 
         if cached_public_key is not None:
@@ -65,14 +65,14 @@ class AdmobSSVView(View):
 
         fetched_public_keys = self.fetch_public_keys()
         cache.set(
-            settings.ADMOB_SSV_KEYS_CACHE_KEY,
+            settings.keys_cache_key,
             fetched_public_keys,
-            math.floor(settings.ADMOB_SSV_KEYS_CACHE_TIMEOUT.total_seconds()),
+            math.floor(settings.keys_cache_timeout.total_seconds()),
         )
         return fetched_public_keys.get(key_id, None)
 
     def fetch_public_keys(self) -> Dict[str, str]:
-        response = requests.get(settings.ADMOB_SSV_KEYS_SERVER_URL)
+        response = requests.get(settings.keys_server_url)
         response.raise_for_status()
         json_data = response.json()
         return {str(key["keyId"]): key["pem"] for key in json_data["keys"]}
