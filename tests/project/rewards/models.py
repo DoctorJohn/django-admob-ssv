@@ -29,7 +29,8 @@ class Reward(models.Model):
         help_text="AdMob ad unit id that was used to request the rewarded video ad.",
     )
 
-    reward_amount = models.IntegerField(
+    reward_amount = models.PositiveIntegerField(
+        # Maximum number is 2147483647 according to the Admob reward settings UI
         blank=True,
         help_text="Reward amount as specified in the ad unit settings.",
     )
