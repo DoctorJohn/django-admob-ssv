@@ -17,11 +17,11 @@ class Reward(models.Model):
         help_text="Timestamp of when the user was rewarded as Epoch time in ms.",
     )
 
-    ad_network = models.IntegerField(
+    ad_network = models.PositiveIntegerField(
         help_text="Ad network identifier for the network that fulfilled this ad.",
     )
 
-    ad_unit = models.IntegerField(
+    ad_unit = models.PositiveIntegerField(
         help_text="AdMob ad unit id that was used to request the rewarded video ad.",
     )
 
@@ -50,7 +50,7 @@ class Reward(models.Model):
         help_text="Custom data string as provided by your app.",
     )
 
-    key_id = models.IntegerField(
+    key_id = models.PositiveIntegerField(
         help_text="Key to be used to verify SSV callback.",
     )
 
