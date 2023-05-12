@@ -36,7 +36,7 @@ class Reward(models.Model):
 
     reward_item = models.CharField(
         blank=True,
-        max_length=128,
+        max_length=512,  # taken from the Admob reward settings UI
         help_text="Reward item as specified in the ad unit settings.",
     )
 
