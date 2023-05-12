@@ -38,12 +38,14 @@ class Reward(models.Model):
 
     # The max length is taken from the Admob reward settings UI
     user_id = models.CharField(
-        blank=True,
         max_length=256,
+        blank=True,
         help_text="User identifier as provided by your app.",
     )
 
-    custom_data = models.TextField(
+    # The max length is taken from the Admob reward settings UI
+    custom_data = models.CharField(
+        max_length=1024,
         blank=True,
         help_text="Custom data string as provided by your app.",
     )
