@@ -82,6 +82,40 @@ ADMOB_SSV_KEYS_CACHE_TIMEOUT = timedelta(days=1)
 ADMOB_SSV_KEYS_CACHE_KEY = "admob_ssv.public_keys"
 ```
 
+## Usage without Django signals
+
+If you don't want to use Django signals, you may subclass the
+`admob_ssv.views.AdmobSSVView` view and override the `handle_valid_ssv`
+method.
+
+Note that unless you call `super().handle_valid_ssv(request)`,
+the `admob_ssv.signals.valid_admob_ssv` signal won't be sent.
+
+```python
+from admob_ssv.views import AdmobSSVView
+
+
+class MyAdmobSSVView(AdmobSSVView):
+    def handle_valid_ssv(self, request) -> None:
+        query = request.GET.dict()
+        ad_network = query.get('ad_network')
+        ad_unit = query.get('ad_unit')
+        custom_data = query.get('custom_data')
+        # ...
+```
+
+Finally add a `path` for your custom view to your `urlpatterns`.
+
+```python
+from django.urls import path
+from my_app.views import MyAdmobSSVView
+
+
+urlpatterns = [
+    path('admob-ssv/', MyAdmobSSVView.as_view()),
+]
+```
+
 ## Using a custom ECDSA library
 
 This project uses the [ecdsa](https://pypi.org/project/ecdsa/) Python
