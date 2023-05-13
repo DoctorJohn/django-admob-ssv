@@ -32,7 +32,7 @@ class AdmobSSVView(View):
         content = self.get_unverified_content(request)
 
         if self.verify_signature(public_key, signature, content):
-            valid_admob_ssv.send(sender=None, query=request.GET.dict())
+            self.handle_valid_ssv(request)
             return HttpResponse()
 
         return HttpResponseBadRequest("Invalid signature")
@@ -94,3 +94,6 @@ class AdmobSSVView(View):
             )
         except BadSignatureError:
             return False
+
+    def handle_valid_ssv(self, request: HttpRequest) -> None:
+        valid_admob_ssv.send(sender=None, query=request.GET.dict())
