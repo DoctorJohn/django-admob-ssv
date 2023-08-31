@@ -4,6 +4,7 @@ from .models import Reward
 
 class RewardAdmin(admin.ModelAdmin):
     list_display = (
+        "__str__",
         "transaction_id",
         "timestamp",
         "ad_network",
