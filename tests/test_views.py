@@ -3,7 +3,7 @@ import base64
 from unittest import mock
 from django.core.cache import cache
 from admob_ssv.views import AdmobSSVView
-from tests.project.rewards.models import Reward
+from tests.project.verifications.models import Verification
 
 PUBLIC_KEY_PEM = """
 -----BEGIN PUBLIC KEY-----
@@ -48,7 +48,7 @@ def test_get_with_valid_callback(client):
     )
 
     assert response.status_code == 200
-    assert Reward.objects.filter(
+    assert Verification.objects.filter(
         ad_network=5450213213286189855,
         ad_unit=1234567890,
         custom_data="customdata42",

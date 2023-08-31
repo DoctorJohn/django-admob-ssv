@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Reward(models.Model):
+class Verification(models.Model):
     """
     https://developers.google.com/admob/android/rewarded-video-ssv#ssv_callback_parameters
     """
@@ -60,4 +60,4 @@ class Reward(models.Model):
     )
 
     def __str__(self):
-        return f"Reward #{self.pk}"
+        return f"Verification #{self.pk}"

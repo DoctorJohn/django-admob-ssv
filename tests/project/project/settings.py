@@ -20,7 +20,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.sessions",
     "django.contrib.staticfiles",
-    "tests.project.rewards",
+    "tests.project.verifications",
 ]
 
 TEMPLATES = [

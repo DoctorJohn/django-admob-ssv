@@ -1,10 +1,10 @@
 from django.dispatch import receiver
 from admob_ssv.signals import valid_admob_ssv
-from .models import Reward
+from .models import Verification
 
 
 @receiver(valid_admob_ssv)
-def reward_user(sender, query, **kwargs):
+def store_verification(sender, query, **kwargs):
     ad_network = query.get("ad_network")
     ad_unit = query.get("ad_unit")
     custom_data = query.get("custom_data")
@@ -19,7 +19,7 @@ def reward_user(sender, query, **kwargs):
     msg = "Valid SSV! Reward item: {}, Reward amount: {}, User ID: {}"
     print(msg.format(reward_item, reward_amount, user_id))
 
-    Reward.objects.create(
+    Verification.objects.create(
         ad_network=ad_network,
         ad_unit=ad_unit,
         custom_data=custom_data,

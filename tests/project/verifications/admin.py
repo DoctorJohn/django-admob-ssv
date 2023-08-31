@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import Reward
+from .models import Verification
 
 
-class RewardAdmin(admin.ModelAdmin):
+class VerificationAdmin(admin.ModelAdmin):
     list_display = (
         "__str__",
         "transaction_id",
@@ -27,4 +27,4 @@ class RewardAdmin(admin.ModelAdmin):
     )
 
 
-admin.site.register(Reward, RewardAdmin)
+admin.site.register(Verification, VerificationAdmin)
