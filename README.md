@@ -168,7 +168,7 @@ live from your local machine. You may use a service like
 your local machine and the Django webserver running at port `8000`.
 
 ```sh
-ngrok http 8000
+ngrok http 127.0.0.1:8000
 ```
 
 You are now ready to send test Admob server-side verification callbacks
