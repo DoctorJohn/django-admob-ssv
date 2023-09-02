@@ -150,6 +150,21 @@ urlpatterns = [
 ]
 ```
 
+## Verify that callbacks are coming from Google
+
+According to the [AdMob SSV FAQ section](https://developers.google.com/admob/android/ssv#faq) one could do the following:
+
+> Use reverse DNS lookup to verify that SSV callbacks originate from Google.
+
+Depending on your setup, possibly behind a reverse proxy, it's not
+trivial to determin the origin IP address of a callback.
+
+Checking the wrong IP address could lead to callbacks being ignored.
+That's why we decided to leave callback origin verification up to you.
+
+**Tip**: It appears to be sufficient to check whether the callback
+contains one of your ad unit ids, which is covered by the signature.
+
 ## Example project
 
 Take a look at our Django example project under `tests/project`.
