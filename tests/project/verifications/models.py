@@ -40,6 +40,7 @@ class Verification(models.Model):
     user_id = models.CharField(
         max_length=256,
         blank=True,
+        null=True,
         help_text="User identifier as provided by your app.",
     )
 
@@ -47,6 +48,7 @@ class Verification(models.Model):
     custom_data = models.CharField(
         max_length=1024,
         blank=True,
+        null=True,
         help_text="Custom data string as provided by your app.",
     )
 
