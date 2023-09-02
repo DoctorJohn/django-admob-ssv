@@ -157,7 +157,7 @@ According to the [AdMob SSV FAQ section](https://developers.google.com/admob/and
 > Use reverse DNS lookup to verify that SSV callbacks originate from Google.
 
 Depending on your setup, possibly behind a reverse proxy, it's not
-trivial to determin the origin IP address of a callback.
+trivial to determine the origin IP address of a callback.
 
 Checking the wrong IP address could lead to callbacks being ignored.
 That's why we decided to leave callback origin verification up to you.
