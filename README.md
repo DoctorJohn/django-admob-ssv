@@ -3,17 +3,17 @@
 [![PyPI][pypi-image]][pypi-url]
 ![PyPI - Python Version][python-image]
 ![PyPI - Django Version][django-image]
+[![Codecov][codecov-image]][codecov-url]
 [![License][license-image]][license-url]
-[![Tests][tests-image]][tests-url]
 
 [pypi-image]: https://img.shields.io/pypi/v/django-admob-ssv
 [pypi-url]: https://pypi.org/project/django-admob-ssv/
 [python-image]: https://img.shields.io/pypi/pyversions/django-admob-ssv
 [django-image]: https://img.shields.io/pypi/djversions/django-admob-ssv
+[codecov-image]: https://codecov.io/gh/DoctorJohn/django-admob-ssv/branch/main/graph/badge.svg
+[codecov-url]: https://codecov.io/gh/DoctorJohn/django-admob-ssv
 [license-image]: https://img.shields.io/pypi/l/django-admob-ssv
 [license-url]: https://github.com/DoctorJohn/django-admob-ssv/blob/master/LICENSE
-[tests-image]: https://github.com/DoctorJohn/django-admob-ssv/workflows/Tests/badge.svg
-[tests-url]: https://github.com/DoctorJohn/django-admob-ssv/actions
 
 A Django app providing a view for handling Admob server-side verification callbacks.
 Successfully verified callbacks trigger a custom Django signal.
