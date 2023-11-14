@@ -1,12 +1,14 @@
-import hashlib
 import base64
-import urllib
+import hashlib
 import math
-import requests
+import urllib
 from typing import Dict, Optional
-from django.http import HttpResponse, HttpResponseBadRequest, HttpRequest
-from django.views import View
+
+import requests
 from django.core.cache import cache
+from django.http import HttpRequest, HttpResponse, HttpResponseBadRequest
+from django.views import View
+
 from admob_ssv.conf import settings
 from admob_ssv.signals import valid_admob_ssv
 
@@ -78,7 +80,7 @@ class AdmobSSVView(View):
         return {str(key["keyId"]): key["pem"] for key in json_data["keys"]}
 
     def verify_signature(self, public_key: str, signature: bytes, content: bytes) -> bool:
-        from ecdsa import VerifyingKey, BadSignatureError
+        from ecdsa import BadSignatureError, VerifyingKey
         from ecdsa.util import sigdecode_der
 
         verifying_key = VerifyingKey.from_pem(public_key)

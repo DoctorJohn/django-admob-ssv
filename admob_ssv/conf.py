@@ -1,5 +1,6 @@
-from django.conf import settings as django_settings
 from datetime import timedelta
+
+from django.conf import settings as django_settings
 
 
 class Settings:
