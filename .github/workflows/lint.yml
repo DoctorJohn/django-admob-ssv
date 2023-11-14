@@ -33,5 +33,5 @@ jobs:
         run: poetry install --no-interaction
       - name: Lint
         run: |
-          poetry run ruff admob_ssv tests
-          poetry run black admob_ssv tests --check
+          poetry run ruff check admob_ssv tests
+          poetry run ruff format --check admob_ssv tests
