@@ -1,6 +1,5 @@
 from datetime import timedelta
 
-
 DEBUG = True
 
 SECRET_KEY = "fake-key"

@@ -1,7 +1,9 @@
-import pytest
 import base64
 from unittest import mock
+
+import pytest
 from django.core.cache import cache
+
 from admob_ssv.views import AdmobSSVView
 from tests.project.verifications.models import Verification
 

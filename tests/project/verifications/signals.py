@@ -1,5 +1,7 @@
 from django.dispatch import receiver
+
 from admob_ssv.signals import valid_admob_ssv
+
 from .models import Verification
 
 
