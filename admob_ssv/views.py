@@ -49,14 +49,15 @@ class AdmobSSVView(View):
         return base64.urlsafe_b64decode(encoded_signature + "===")
 
     def get_unverified_content(self, request: HttpRequest) -> bytes:
-        # According to the Admob SSV documentation, the last two query
-        # parameters of rewarded video SSV callbacks are always
-        # signature and key_id, in that order. The remaining query
-        # parameters specify the content to be verified.
+        # Content to be verified.
         query_string = request.META["QUERY_STRING"]
-        signature_start_index = query_string.index(f"&{self.SIGNATURE_PARAM_NAME}=")
-        escaped_content = query_string[:signature_start_index]
-        return urllib.parse.unquote(escaped_content).encode("utf-8")
+        content = urllib.parse.unquote(query_string).encode("utf-8").split(b"&")
+
+        encoded_signature_param = self.SIGNATURE_PARAM_NAME.encode()
+        encoded_key_id_param = self.KEY_ID_PARAM_NAME.encode()
+
+        fixed_content = [c for c in content if not c.startswith((encoded_signature_param, encoded_key_id_param))]
+        return b"&".join(fixed_content)
 
     def get_public_key(self, key_id: str) -> Optional[str]:
         cached_public_keys = cache.get(settings.keys_cache_key, default={})
