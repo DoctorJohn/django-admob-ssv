@@ -1,4 +1,5 @@
 import base64
+import binascii
 import random
 from unittest import mock
 
@@ -195,7 +196,7 @@ def test_get_signature_handles_incorrect_padding(rf):
         data={"signature": signature},
     )
 
-    with pytest.raises(base64.binascii.Error):
+    with pytest.raises(binascii.Error):
         base64.urlsafe_b64decode(signature)
 
     AdmobSSVView().get_signature(request)
