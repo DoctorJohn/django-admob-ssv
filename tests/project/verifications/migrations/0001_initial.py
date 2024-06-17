@@ -48,7 +48,9 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "reward_amount",
-                    models.PositiveIntegerField(help_text="Reward amount as specified in the ad unit settings."),
+                    models.PositiveIntegerField(
+                        help_text="Reward amount as specified in the ad unit settings."
+                    ),
                 ),
                 (
                     "reward_item",
@@ -75,7 +77,9 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "key_id",
-                    models.PositiveBigIntegerField(help_text="Key to be used to verify SSV callback."),
+                    models.PositiveBigIntegerField(
+                        help_text="Key to be used to verify SSV callback."
+                    ),
                 ),
                 (
                     "signature",
