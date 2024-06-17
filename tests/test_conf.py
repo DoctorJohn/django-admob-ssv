@@ -5,7 +5,10 @@ from admob_ssv.conf import settings as admob_ssv_settings
 
 def test_settings_keys_server_url_default(settings):
     del settings.ADMOB_SSV_KEYS_SERVER_URL
-    assert admob_ssv_settings.keys_server_url == "https://www.gstatic.com/admob/reward/verifier-keys.json"
+    assert (
+        admob_ssv_settings.keys_server_url
+        == "https://www.gstatic.com/admob/reward/verifier-keys.json"
+    )
 
 
 def test_settings_keys_server_url_override(settings):

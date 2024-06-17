@@ -86,7 +86,9 @@ class AdmobSSVView(View):
         json_data = response.json()
         return {str(key["keyId"]): key["pem"] for key in json_data["keys"]}
 
-    def verify_signature(self, public_key: str, signature: bytes, content: bytes) -> bool:
+    def verify_signature(
+        self, public_key: str, signature: bytes, content: bytes
+    ) -> bool:
         from ecdsa import BadSignatureError, VerifyingKey
         from ecdsa.util import sigdecode_der
 
