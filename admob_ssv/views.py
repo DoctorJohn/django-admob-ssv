@@ -1,7 +1,7 @@
 import base64
 import hashlib
 import math
-import urllib
+import urllib.parse
 from typing import Dict, Optional
 
 import requests
@@ -49,15 +49,21 @@ class AdmobSSVView(View):
         return base64.urlsafe_b64decode(encoded_signature + "===")
 
     def get_unverified_content(self, request: HttpRequest) -> bytes:
-        # Content to be verified.
+        # According to the Admob SSV documentation, the last two query
+        # parameters of rewarded video SSV callbacks are always signature and
+        # key_id, in that order. The remaining query parameters are sent in
+        # alphabetical order and specify the content to be verified.
+        # However, middleware might interfere with the order of query parameters.
+        # To ensure that the content can still be verified, we reorder the query
+        # parameters alphabetically.
         query_string = request.META["QUERY_STRING"]
-        content = urllib.parse.unquote(query_string).encode("utf-8").split(b"&")
 
-        encoded_signature_param = self.SIGNATURE_PARAM_NAME.encode()
-        encoded_key_id_param = self.KEY_ID_PARAM_NAME.encode()
+        query_data = urllib.parse.parse_qs(query_string)
+        query_data.pop(self.SIGNATURE_PARAM_NAME, None)
+        query_data.pop(self.KEY_ID_PARAM_NAME, None)
 
-        fixed_content = [c for c in content if not c.startswith((encoded_signature_param, encoded_key_id_param))]
-        return b"&".join(fixed_content)
+        sorted_query_data = sorted(query_data.items())
+        return urllib.parse.urlencode(sorted_query_data, doseq=True).encode("utf-8")
 
     def get_public_key(self, key_id: str) -> Optional[str]:
         cached_public_keys = cache.get(settings.keys_cache_key, default={})
