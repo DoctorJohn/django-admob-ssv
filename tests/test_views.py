@@ -1,4 +1,5 @@
 import base64
+import random
 from unittest import mock
 
 import pytest
@@ -65,21 +66,28 @@ def test_get_with_valid_callback(client):
 
 
 @pytest.mark.django_db
-def test_get_with_valid_callback_with_unordered_query_parameters(client):
+def test_get_with_valid_callback_and_unordered_query_parameters(client):
+    params = [
+        ("ad_network", 5450213213286189855),
+        ("ad_unit", 1234567890),
+        ("custom_data", "customdata42"),
+        ("key_id", 3335741209),
+        ("reward_amount", 1),
+        ("reward_item", "Reward"),
+        (
+            "signature",
+            "MEQCIAhKY5P-aBmjU0iqxtjq2JPzeNKnQ92ZbSPC33Sp4ByeAiBArqhg9_uafB1LCBYVIXWNOW8vVVlocLc81ptROfE44Q",
+        ),
+        ("timestamp", 1683852940453),
+        ("transaction_id", 123456789),
+        ("user_id", "userid42"),
+    ]
+
+    random.shuffle(params)
+
     response = client.get(
         path="/admob-ssv/",
-        data={
-            "ad_network": 5450213213286189855,
-            "ad_unit": 1234567890,
-            "custom_data": "customdata42",
-            "reward_amount": 1,
-            "reward_item": "Reward",
-            "signature": "MEQCIAhKY5P-aBmjU0iqxtjq2JPzeNKnQ92ZbSPC33Sp4ByeAiBArqhg9_uafB1LCBYVIXWNOW8vVVlocLc81ptROfE44Q",
-            "timestamp": 1683852940453,
-            "transaction_id": 123456789,
-            "key_id": 3335741209,
-            "user_id": "userid42",
-        },
+        data=dict(params),
     )
 
     assert response.status_code == 200
