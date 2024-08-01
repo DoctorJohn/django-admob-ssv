@@ -63,7 +63,8 @@ class AdmobSSVView(View):
         query_data.pop(self.KEY_ID_PARAM_NAME, None)
 
         sorted_query_data = sorted(query_data.items())
-        return urllib.parse.urlencode(sorted_query_data, doseq=True).encode("utf-8")
+        sorted_query_string = urllib.parse.urlencode(sorted_query_data, doseq=True)
+        return urllib.parse.unquote(sorted_query_string).encode("utf-8")
 
     def get_public_key(self, key_id: str) -> Optional[str]:
         cached_public_keys = cache.get(settings.keys_cache_key, default={})
