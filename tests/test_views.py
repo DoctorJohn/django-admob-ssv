@@ -67,6 +67,39 @@ def test_get_with_valid_callback(client):
 
 
 @pytest.mark.django_db
+def test_get_with_base64_encoded_payload(client):
+    response = client.get(
+        path="/admob-ssv/",
+        data={
+            "ad_network": 5450213213286189855,
+            "ad_unit": 1234567890,
+            "custom_data": "8b626840-a5bb-4732-a02b-67517d6b9443",
+            "reward_amount": 1,
+            "reward_item": "Boost",
+            "timestamp": 1683939248995,
+            "transaction_id": 123456789,
+            "user_id": "VXNlcjo0Mg==",
+            "signature": "MEQCIGdfQR4eu9bOi3gg069p0ZcH5H-u3etEFQsSJZ4fPU_EAiB75fI8p8uKetMld8_wT3GNPuGnnJYNpHN2ZP9u7bcpiA",
+            "key_id": 3335741209,
+        },
+    )
+
+    assert response.status_code == 200
+    assert Verification.objects.filter(
+        ad_network=5450213213286189855,
+        ad_unit=1234567890,
+        custom_data="8b626840-a5bb-4732-a02b-67517d6b9443",
+        key_id=3335741209,
+        reward_amount=1,
+        reward_item="Boost",
+        signature="MEQCIGdfQR4eu9bOi3gg069p0ZcH5H-u3etEFQsSJZ4fPU_EAiB75fI8p8uKetMld8_wT3GNPuGnnJYNpHN2ZP9u7bcpiA",
+        timestamp=1683939248995,
+        transaction_id="123456789",
+        user_id="VXNlcjo0Mg==",
+    ).exists()
+
+
+@pytest.mark.django_db
 def test_get_with_valid_callback_and_unordered_query_parameters(client):
     params = [
         ("ad_network", 5450213213286189855),
