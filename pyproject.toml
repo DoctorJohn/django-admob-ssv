@@ -36,7 +36,7 @@ ecdsa = "^0.19.0"
 requests = "^2.30.0"
 
 [tool.poetry.group.dev.dependencies]
-ruff = "^0.5.5"
+ruff = "^0.7.2"
 pre-commit = "^3.3.1"
 pytest = "^8.2.2"
 pytest-cov = "^5.0.0"
