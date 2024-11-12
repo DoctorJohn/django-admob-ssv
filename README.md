@@ -13,7 +13,7 @@
 [codecov-image]: https://codecov.io/gh/DoctorJohn/django-admob-ssv/branch/main/graph/badge.svg
 [codecov-url]: https://codecov.io/gh/DoctorJohn/django-admob-ssv
 [license-image]: https://img.shields.io/pypi/l/django-admob-ssv
-[license-url]: https://github.com/DoctorJohn/django-admob-ssv/blob/master/LICENSE
+[license-url]: https://github.com/DoctorJohn/django-admob-ssv/blob/main/LICENSE
 
 A Django app providing a view for handling Admob server-side verification callbacks.
 Successfully verified callbacks trigger a custom Django signal.
