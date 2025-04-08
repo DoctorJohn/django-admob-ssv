@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-admob-ssv"
-version = "3.2.0"
+version = "3.3.0"
 description = "Admob server-side verification for Django projects"
 authors = ["Jonathan Ehwald <github@ehwald.info>"]
 license = "MIT"
