@@ -1,6 +1,6 @@
 [project]
 name = "django-admob-ssv"
-version = "3.3.0"
+version = "3.4.0"
 description = "Admob server-side verification for Django projects"
 authors = [{ name = "Jonathan Ehwald", email = "github@ehwald.info" }]
 license = { text = "MIT" }
