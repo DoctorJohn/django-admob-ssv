@@ -26,4 +26,4 @@ jobs:
       - name: Lint
         run: |
           uv run ruff check admob_ssv tests
-          uv run ruff format --check admob_ssv tests
+          uv run ruff format --diff admob_ssv tests
