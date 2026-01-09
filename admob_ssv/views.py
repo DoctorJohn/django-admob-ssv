@@ -2,7 +2,6 @@ import base64
 import hashlib
 import math
 import urllib.parse
-from typing import Dict, Optional
 
 import requests
 from django.core.cache import cache
@@ -66,7 +65,7 @@ class AdmobSSVView(View):
         sorted_query_string = urllib.parse.urlencode(sorted_query_data, doseq=True)
         return urllib.parse.unquote(sorted_query_string).encode("utf-8")
 
-    def get_public_key(self, key_id: str) -> Optional[str]:
+    def get_public_key(self, key_id: str) -> str | None:
         cached_public_keys = cache.get(settings.keys_cache_key, default={})
         cached_public_key = cached_public_keys.get(key_id, None)
 
@@ -81,7 +80,7 @@ class AdmobSSVView(View):
         )
         return fetched_public_keys.get(key_id, None)
 
-    def fetch_public_keys(self) -> Dict[str, str]:
+    def fetch_public_keys(self) -> dict[str, str]:
         response = requests.get(settings.keys_server_url)
         response.raise_for_status()
         json_data = response.json()
