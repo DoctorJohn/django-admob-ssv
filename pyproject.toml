@@ -42,10 +42,6 @@ homepage = "https://github.com/DoctorJohn/django-admob-ssv"
 repository = "https://github.com/DoctorJohn/django-admob-ssv"
 documentation = "https://github.com/DoctorJohn/django-admob-ssv"
 
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
-
 [dependency-groups]
 dev = [
     "pre-commit>=4.2.0",
@@ -57,8 +53,13 @@ dev = [
     "ruff>=0.11.6",
 ]
 
-[tool.hatch.build.targets.wheel]
-packages = ["admob_ssv"]
+[build-system]
+requires = ["uv_build>=0.9.24,<0.10.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-root = ""
+module-name = "admob_ssv"
 
 [tool.ruff.lint]
 extend-select = ["I", "UP"]
