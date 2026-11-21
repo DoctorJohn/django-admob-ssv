@@ -8,7 +8,7 @@ license-files = ["LICENSE"]
 readme = "README.md"
 requires-python = ">=3.10,<4.0"
 dependencies = [
-    "django (>=4.2)",
+    "django (>=5.2)",
     "ecdsa (>=0.19.0,<1.0.0)",
     "requests (>=2.30.0,<3.0.0)",
 ]
@@ -16,9 +16,6 @@ classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Environment :: Web Environment",
     "Framework :: Django",
-    "Framework :: Django :: 4.2",
-    "Framework :: Django :: 5.0",
-    "Framework :: Django :: 5.1",
     "Framework :: Django :: 5.2",
     "Framework :: Django :: 6.0",
     "Intended Audience :: Developers",
