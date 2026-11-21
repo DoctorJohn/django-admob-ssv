@@ -3,7 +3,8 @@ name = "django-admob-ssv"
 version = "3.5.0"
 description = "Admob server-side verification for Django projects"
 authors = [{ name = "Jonathan Ehwald", email = "github@ehwald.info" }]
-license = { text = "MIT" }
+license = "MIT"
+license-files = ["LICENSE"]
 readme = "README.md"
 requires-python = ">=3.10,<4.0"
 dependencies = [
@@ -21,7 +22,6 @@ classifiers = [
     "Framework :: Django :: 5.2",
     "Framework :: Django :: 6.0",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
